@@ -1,0 +1,23 @@
+{
+  "id": "./",
+  "name": "رفيق السكري — متابعة أوضح، كل يوم",
+  "short_name": "رفيق السكري",
+  "description": "سجل قراءات خاص على جهازك، وخطة يومية وتقارير للطبيب وتثقيف موثوق يعمل دون إنترنت بعد التجهيز الأول.",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f6f8fa",
+  "theme_color": "#0d3042",
+  "categories": ["health", "medical", "education"],
+  "icons": [
+    {"src": "./assets/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any"},
+    {"src": "./assets/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any"},
+    {"src": "./assets/icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable"}
+  ],
+  "shortcuts": [
+    {"name": "سجل القراءات", "short_name": "القراءات", "url": "./#readings", "icons": [{"src":"./assets/icon-192.png","sizes":"192x192"}]},
+    {"name": "تقرير الطبيب", "short_name": "تقريري", "url": "./#reports", "icons": [{"src":"./assets/icon-192.png","sizes":"192x192"}]}
+  ]
+}

@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d3042">
+  <meta name="description" content="رفيق السكري: سجل عربي خاص على جهازك، قراءات ورسوم وتقارير للطبيب وتثقيف موثق. يعمل دون إنترنت بعد التجهيز الأول.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="رفيق السكري">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>رفيق السكري | متابعة أوضح، كل يوم</title>
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/svg+xml" href="./assets/app-icon.svg">
+  <link rel="apple-touch-icon" href="./assets/icon-192.png">
+  <link rel="preload" href="./assets/cairo-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./core.js"></script>
+  <script defer src="./storage.js"></script>
+  <script defer src="./content.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">انتقل إلى المحتوى</a>
+  <div id="boot" class="boot"><img src="./assets/app-icon.svg" width="70" height="70" alt=""><h1>رفيق السكري</h1><p>نجهّز مساحتك الخاصة…</p></div>
+  <div id="shell" hidden>
+    <aside class="sidebar" id="sidebar" aria-label="القائمة الرئيسية">
+      <a href="#dashboard" class="brand"><img src="./assets/app-icon.svg" width="46" height="46" alt=""><span><strong>رفيق السكري</strong><small>متابعة أوضح، كل يوم</small></span></a>
+      <div class="side-label">مساحتك اليومية</div>
+      <nav id="desktopNav"></nav>
+      <button class="sos-side" data-action="sos"><span data-icon="shield"></span><span>عند هبوط السكر<small>خطوات واضحة ومؤقت للقياس</small></span><span>←</span></button>
+      <div class="side-bottom"><div class="private-dot"><i></i> بياناتك تبقى على جهازك</div><p>مساحة للمتابعة والتثقيف<br>تدعم خطتك مع الفريق الطبي</p><button class="text-button" data-action="install"><span data-icon="download"></span> تثبيت التطبيق</button></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><div><span class="eyebrow">خطوة صغيرة لصحتك</span><h2 id="viewTitle">نظرة على يومك</h2></div><div class="top-actions"><span id="offlineStatus" class="status-chip"><i></i><span>تجهيز العمل دون إنترنت</span></span><button class="icon-button" data-action="settings" aria-label="الملف والأهداف"><span data-icon="settings"></span></button><button class="profile-avatar" data-action="settings" aria-label="الملف الشخصي">ر</button></div></header>
+      <div id="demoBanner" class="demo-banner" hidden><strong>عرض تجريبي — بيانات افتراضية وليست سجل مريض.</strong><span>التغييرات هنا مؤقتة.</span><button data-action="exit-demo">العودة إلى سجلي ←</button></div>
+      <div id="storageWarning" class="notice danger" hidden role="alert"></div>
+      <div id="updateNotice" class="update-notice" hidden><span>يتوفر إصدار جديد. بياناتك تبقى محفوظة.</span><button data-action="apply-update">تحديث الآن</button></div>
+      <main id="main" tabindex="-1"></main>
+      <footer class="app-footer"><span>رفيق السكري <b>•</b> مشروع جامعي تطبيقي، الإصدار <span id="version"></span></span><button class="text-button" data-action="about">مبروكة 5784 · نسرين 5783 <span>↗</span></button></footer>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="التنقل السريع"></nav>
+    <button class="mobile-add" data-action="add-reading" aria-label="إضافة قراءة سكر"><span data-icon="plus"></span></button>
+    <div id="timerDock" class="timer-dock" hidden><button data-action="sos"><span data-icon="clock"></span><span>إعادة القياس خلال <b id="timerDockTime">15:00</b></span></button><button data-action="cancel-timer" aria-label="إلغاء المؤقت">×</button></div>
+  </div>
+  <dialog id="appDialog" aria-labelledby="dialogTitle"><div id="dialogContent"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="printRoot" class="print-root"></div>
+  <input id="restoreFile" type="file" accept="application/json,.json" hidden>
+  <noscript><div class="noscript">يرجى تفعيل JavaScript لتسجيل القراءات وتشغيل التطبيق. لا نرسل بياناتك إلى خادم.</div></noscript>
+</body>
+</html>
