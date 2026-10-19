@@ -1,11 +1,11 @@
-/* Rafiq Diabetes 1.0.0 — deterministic, descriptive calculations only. */
+/* Rafiq Diabetes 1.0.1 — deterministic, descriptive calculations only. */
 (function (root, factory) {
   const api = factory();
   if (typeof module === 'object' && module.exports) module.exports = api;
   else root.RafiqCore = api;
 })(typeof globalThis !== 'undefined' ? globalThis : this, function () {
   'use strict';
-  const VERSION = '1.0.0';
+  const VERSION = '1.0.1';
   const CONTEXTS = Object.freeze({ fasting: 'صائم', before: 'قبل الوجبة', after: 'بعد بداية الوجبة بساعة إلى ساعتين', bedtime: 'قبل النوم', random: 'وقت آخر' });
   const id = () => globalThis.crypto?.randomUUID?.() || Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
   const clone = x => JSON.parse(JSON.stringify(x));

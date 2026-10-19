@@ -18,15 +18,15 @@ async function response(url,mode='cors'){let p;handlers.fetch({request:{url,meth
 async function run(){
  await lifecycle('install');assert.equal(skipped,false);console.log('PASS all offline files exist and cache atomically; updates do not force reload');
  await lifecycle('activate');assert.ok(claimed);assert.ok(stores.has(other));assert.ok(!stores.has('rafiq-offline:'+scope+':0.9.0'));console.log('PASS activation cleans only this repository cache');
- for(const f of ['index.html','app.js','core.js','storage.js','content.js','styles.css','assets/cairo-regular.woff2','assets/hero.svg','assets/plate.svg','assets/icon-512.png','research/'+encodeURIComponent('ورقة_العمل_المبدئية.pdf')]){const r=await response(scope+f);assert.ok(r.ok,f);assert.ok((await r.arrayBuffer()).byteLength>0);}
+ for(const f of ['index.html','app.js','core.js','storage.js','content.js','styles.css','assets/cairo-regular.woff2','assets/hero.svg','assets/plate.svg','favicon.ico?v=1.0.1','apple-touch-icon.png?v=1.0.1','assets/favicon-16.png?v=1.0.1','assets/favicon-32.png?v=1.0.1','manifest.webmanifest?v=1.0.1','assets/icon-192.png?v=1.0.1','assets/icon-512.png?v=1.0.1','assets/icon-maskable-512.png?v=1.0.1','research/'+encodeURIComponent('ورقة_العمل_المبدئية.pdf')]){const r=await response(scope+f);assert.ok(r.ok,f);assert.ok((await r.arrayBuffer()).byteLength>0);}
  assert.equal(networkCalls,0);console.log('PASS complete application, fonts, artwork, icons and research PDF available with network blocked');
  const css=await response(scope+'styles.css?ref=1');assert.ok((await css.text()).includes(':root'));console.log('PASS query strings do not break cached application assets');
  const page=await response(scope+'saved/path','navigate');assert.ok((await page.text()).includes('رفيق السكري'));console.log('PASS offline navigation falls back to the application shell within scope');
  assert.equal(await response('https://www.cdc.gov/diabetes/'),null);assert.equal(await response('https://patient.github.io/unrelated/'),null);console.log('PASS external references and unrelated GitHub projects are not intercepted');
  const missing=await response(scope+'missing-image.png');assert.equal(missing.status,503);console.log('PASS missing offline files return explicit unavailable status, not fake success');
- let status;await lifecycle('message',{data:{type:'CACHE_STATUS'},ports:[{postMessage:v=>status=v}]});assert.equal(status.ready,true);console.log('PASS ready indicator verifies every pre-cached file');
+ let status;await lifecycle('message',{data:{type:'CACHE_STATUS'},ports:[{postMessage:v=>status=v}]});assert.equal(status.ready,true);assert.equal(status.version,JSON.parse(fs.readFileSync(path.join(ROOT,'package.json'))).version);console.log('PASS ready indicator verifies every pre-cached file and the current version');
  handlers.message({data:{type:'SKIP_WAITING'}});assert.ok(skipped);console.log('PASS version activation requires explicit update message');
- forceFailure=true;await assert.rejects(()=>lifecycle('install'));assert.ok(stores.has(other));assert.ok(![...stores.keys()].some(k=>k.startsWith('rafiq-offline:'+scope+':1.0.0')));console.log('PASS partial install failure never claims offline readiness');
+ forceFailure=true;await assert.rejects(()=>lifecycle('install'));assert.ok(stores.has(other));assert.ok(![...stores.keys()].some(k=>k.startsWith('rafiq-offline:'+scope+':'+status.version)));console.log('PASS partial install failure never claims offline readiness');
  console.log('\n10 service-worker checks passed.');
 }
 run().catch(e=>{console.error(e);process.exitCode=1});
