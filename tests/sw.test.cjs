@@ -7,7 +7,7 @@ let claimed=false,skipped=false,networkCalls=0,forceFailure=false;
 const normalize=(req,ignoreSearch=false)=>{const u=new URL(typeof req==='string'?req:req.url);if(ignoreSearch)u.search='';u.hash='';return u.href};
 const caches={
  async open(name){if(!stores.has(name))stores.set(name,new Map());const map=stores.get(name);return{
-  async addAll(requests){const pending=[];for(const r of requests){const url=normalize(r);const local=decodeURIComponent(new URL(url).pathname.slice(new URL(scope).pathname.length));const target=path.join(ROOT,local||'index.html');assert.ok(target.startsWith(ROOT));assert.ok(fs.existsSync(target),target);if(forceFailure&&url.includes('cairo-bold'))throw new Error('network failed');pending.push([url,new Response(fs.readFileSync(target))]);}for(const [u,r]of pending)map.set(u,r)},
+  async addAll(requests){const pending=[];for(const r of requests){const url=normalize(r);const local=decodeURIComponent(new URL(url).pathname.slice(new URL(scope).pathname.length));const target=path.join(ROOT,(!local||local.endsWith('/'))?local+'index.html':local);assert.ok(target.startsWith(ROOT));assert.ok(fs.existsSync(target),target);if(forceFailure&&url.includes('cairo-bold'))throw new Error('network failed');pending.push([url,new Response(fs.readFileSync(target))]);}for(const [u,r]of pending)map.set(u,r)},
   async match(req,opts={}){const key=normalize(req,opts.ignoreSearch);const entry=[...map.entries()].find(([k])=>normalize(k,opts.ignoreSearch)===key)?.[1];return entry?.clone()},
  };},async keys(){return [...stores.keys()]},async delete(name){return stores.delete(name)}
 };

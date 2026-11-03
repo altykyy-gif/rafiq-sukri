@@ -1,11 +1,11 @@
 {
   "name": "rafiq-diabetes",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "private": true,
   "description": "Arabic offline diabetes logbook PWA; optional development test dependencies only",
   "scripts": {
-    "test": "node tests/dom.test.cjs && node tests/sw.test.cjs",
-    "check": "node --check app.js && node --check core.js && node --check storage.js && node --check content.js && node --check sw.js"
+    "test": "node tests/dom.test.cjs && node tests/sw.test.cjs && node tests/features.test.cjs",
+    "check": "node --check app.js && node --check core.js && node --check storage.js && node --check content.js && node --check sw.js && node --check assistant.js && node --check doctor/triage.js && node --check doctor/doctor.js"
   },
   "devDependencies": {
     "jsdom": "30.1.3",

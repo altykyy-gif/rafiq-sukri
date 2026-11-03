@@ -1,9 +1,10 @@
 /* Offline application shell; patient data never enters the network cache. */
 'use strict';
 const CACHE_PREFIX = 'rafiq-offline:' + self.registration.scope + ':';
-const CACHE_NAME = CACHE_PREFIX + '1.0.1';
+const CACHE_NAME = CACHE_PREFIX + '1.1.0';
 const FILES = [
-  './', './index.html', './styles.css', './core.js', './storage.js', './content.js', './app.js', './manifest.webmanifest',
+  './', './index.html', './styles.css', './core.js', './storage.js', './content.js', './app.js', './assistant.js', './manifest.webmanifest',
+  './assistant/', './assistant/index.html', './assistant/assistant-page.js', './doctor/', './doctor/index.html', './doctor/triage.js', './doctor/doctor.js',
   './assets/app-icon.svg', './assets/icon-192.png', './assets/icon-512.png', './assets/icon-maskable-512.png',
   './favicon.ico', './apple-touch-icon.png', './assets/favicon-16.png', './assets/favicon-32.png',
   './assets/cairo-regular.woff2', './assets/cairo-bold.woff2', './assets/hero.svg', './assets/plate.svg', './assets/research-logo.png',
@@ -45,7 +46,7 @@ self.addEventListener('message', event => {
     event.waitUntil((async () => {
       const cache = await caches.open(CACHE_NAME);
       const checks = await Promise.all(URLS.map(url => cache.match(url)));
-      event.ports[0]?.postMessage({ ready: checks.every(Boolean), version: '1.0.1' });
+      event.ports[0]?.postMessage({ ready: checks.every(Boolean), version: '1.1.0' });
     })());
   }
 });

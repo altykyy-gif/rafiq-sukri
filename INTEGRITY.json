@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.1.0",
   "algorithm": "SHA-256",
   "files": {
     ".gitignore": "32310257457927494e20976a2a2c0779d86a606700b014bbb40792bbfe0c94dc",
@@ -7,8 +7,8 @@
     "LICENSE.txt": "cbc27a504ebf0f7ef675ec56a568dfe1005e12dd9d250cda6fadcf47c2313250",
     "PROJECT_NOTES-ar.md": "332ddb0514ad4ee17dce0a65b1d1194a7ba0abfc0808505adc76b5cddbe0fc2c",
     "README-ar.md": "4a209bcdd8351b5af5735560e96c929549b962914d6c2b9f1333b4dded2a5392",
-    "TESTING-ar.md": "c6c48e1d233f8801654fc27b5fac09e98c89e6ea9a48102e3153436c7d9f8ec2",
-    "app.js": "4bb1d1657825347dc9d973ae3e977836171714cd79d3f513eaec7392d57f691d",
+    "TESTING-ar.md": "0c41953c43a800661bda7f37001d9e8b0eef8020965c1d4e6c69d516cb6f93cd",
+    "app.js": "83c0f5ae352639bfdc42cfab8f89ef4e7cacd6ba3e89b7781941ea43c9d49344",
     "apple-touch-icon.png": "a45d653d110a5ca8e2930761556c822899972f64da6da1c045470f84fd40b56c",
     "assets/OFL-Cairo.txt": "a4554e1799d42e1405924b61eb0e0722ae1623b1f1f07f995348f96c496362a9",
     "assets/app-icon.svg": "8ba570a8ef0c8df8aaf49a58d78f0b5e5b6f1ac9ac2d768f4e3a511672c51aed",
@@ -22,17 +22,24 @@
     "assets/icon-maskable-512.png": "78495c227c3e95dfd520cf3cbe98686521152cf2b0cbde4482ebcce57a5bc691",
     "assets/plate.svg": "523a853ea09cce383746f47d03892213f61e93eded133e5166dfcab013b63d9f",
     "assets/research-logo.png": "26ec289af0b8702f95139bc3ece2b11757b3f06044be67c8168e285e248df5d3",
+    "assistant.js": "1f7beb35bacf24a113391b02d347f3acd43976e8db1766e38df9d96490249669",
+    "assistant/assistant-page.js": "cffd942a83a135f7c00d9b32f375a24555c4bb31f7e133510c6bc914ddac7f16",
+    "assistant/index.html": "b9877765ab9d68105f2a86b954158b68de898bdfa93ff7acacbbbdc414b1ea25",
     "content.js": "11e2da75705d5faa13d0716b8f2255de1ee9c4fb6ff4d3942eb1dc393b7f3134",
-    "core.js": "42c2da74045b677ebdd0e4b66a8beb92254ab19a7e4fda8d4da8e271057ff5de",
+    "core.js": "971828356ce38ccbee43f6dd31b50e93629274ac81f21f2f66956a3942fb8f31",
+    "doctor/doctor.js": "8797255ddf65ac9321504fb0131b161d8b672695658c5bdc192dbdf3b5f09d88",
+    "doctor/index.html": "1568bc33d6d2f9aea22dc124994daf4428a9a4eb5d8b86c17f867b6e774301c8",
+    "doctor/triage.js": "a41439cbe944c17bd24f10e0eb0b72f6b142aa32fc759a1924ba6b675f5339c2",
     "favicon.ico": "79a89a75df9db5349a48838182a44c3592a9f55c1989b5b7d3f11df391f07d65",
-    "index.html": "b852e93b5ca65b2243ffcfed866e127173c9a226f100c4a884e7c20480a9f9c4",
+    "index.html": "24bef5894485b64f05b6109047635c90be9e7b2e83e34a44906b009411f6649b",
     "manifest.webmanifest": "d14609736fd998104a3bb1c941d9088426d9f1edcd807423e401e009273b98a7",
-    "package.json": "2180e1699ae36727e564b51276f2f04f6e549e5b6d49655fbd9d138703e0a95e",
+    "package.json": "3458f4d752ca53ce16ae1e9e51a1f7117fe9e30f037bf278127c8348ebbfac6d",
     "research/ورقة_العمل_المبدئية.pdf": "9d50cab183eb039d6fbe97a9ab527414719ac8c97a1c53e8ead0ab3c7ded6c24",
     "storage.js": "f361ce04c9287b14f04ff72b2c3ccda4548c7b529071a5eb160a82e44edd242d",
     "styles.css": "812f1c757350b3050f4851159675b3c958477964a90cb70e569e3265a692deea",
-    "sw.js": "4c2cfd877388b7a88028259dfcd55a389fe00ce0baeffb0b5c963d3b201cc47c",
+    "sw.js": "b5cb3781ddece252f0069eccc9f9f98e57c6d13a514cb6e3d4abf63f12cc0f29",
     "tests/dom.test.cjs": "d4b111ef2a72b45c5501d0c93447f3f733bf3da97a66ab4fd5cc8c3e5791db6d",
-    "tests/sw.test.cjs": "848352a23cf4c8dcd608bb4f9e86beb419b967aca1b319ff5d810f709efc0fa9"
+    "tests/features.test.cjs": "46f80e716016d65f46e72bda727c76d98d779bc6096cee9863cc37a1f9fa5bc1",
+    "tests/sw.test.cjs": "ce43c18a94534ef9ede39a98b4756ed792722d5da9b61dd49faf5c5de147d053"
   }
 }

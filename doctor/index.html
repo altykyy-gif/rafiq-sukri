@@ -1,0 +1,15 @@
+<!doctype html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
+<title>لوحة الطبيب | رفيق السكري</title>
+<style>@font-face{font-family:Cairo;src:url(../assets/cairo-regular.woff2) format('woff2')}body{font-family:Cairo,system-ui,sans-serif;margin:0;background:#f6f8fa;color:#173744}main{max-width:900px;margin:auto;padding:20px}h1{color:#0d3042}.note{background:#f8f3e9;border-radius:12px;padding:12px}.bar{display:flex;gap:10px;flex-wrap:wrap;margin:14px 0}button,label.btn{background:#147d86;color:#fff;border:0;border-radius:10px;padding:10px 16px;font:inherit;cursor:pointer}#clear{background:#526e79}.wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;background:#fff}td,th{padding:10px;border-bottom:1px solid #e1e9eb;text-align:right}tr.high td:nth-child(2){color:#b43f45;font-weight:700}tr.medium td:nth-child(2){color:#b59555;font-weight:700}.err{color:#b43f45}a{color:#147d86}</style></head>
+<body><main>
+<p><a href="../">← العودة إلى التطبيق</a></p>
+<h1>لوحة متابعة المرضى</h1>
+<p class="note">تعمل على جهازك فقط ولا ترفع الملفات لأي خادم. الترتيب إداري لأولوية المراجعة وفق قواعد ثابتة على آخر 14 يومًا، وليس تشخيصًا ولا بديلًا عن تقدير الطبيب. تُقبل النسخ الاحتياطية <b>غير المشفرة</b> من رفيق السكري، وبموافقة صاحب البيانات.</p>
+<div class="bar"><label class="btn">إضافة ملفات النسخ الاحتياطية<input id="files" type="file" accept="application/json,.json" multiple hidden></label><button id="clear" type="button">مسح اللوحة</button></div>
+<div id="msgs" role="status"></div>
+<p id="empty">لم تُضف ملفات بعد.</p>
+<div class="wrap"><table id="tbl" hidden><thead><tr><th>المريض</th><th>الأولوية</th><th>الأسباب</th><th>عدد القراءات</th><th>داخل النطاق</th></tr></thead><tbody id="rows"></tbody></table></div>
+</main>
+<script src="../core.js"></script><script src="./triage.js"></script><script src="./doctor.js"></script></body></html>

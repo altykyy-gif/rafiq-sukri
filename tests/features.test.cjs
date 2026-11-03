@@ -1,0 +1,14 @@
+const assert=require('node:assert/strict'),path=require('node:path'),R=p=>path.resolve(__dirname,'..',p);
+const Core=require(R('core.js'));require(R('content.js'));const A=require(R('assistant.js')),T=require(R('doctor/triage.js'));
+const cards=globalThis.RafiqContent.cards;let n=0;const ok=(name,f)=>{f();n++;console.log('PASS '+name);};
+ok('assistant finds hypoglycemia card',()=>{const r=A.answer('ماذا أفعل عند هبوط السكر',cards);assert.equal(r.kind,'found');assert.equal(r.results[0].card.id,'low');});
+ok('assistant routes emergencies',()=>assert.equal(A.answer('أبي فاقد الوعي ولا يستجيب',cards).kind,'emergency'));
+ok('assistant refuses dosing',()=>assert.equal(A.answer('كم جرعة الانسولين',cards).kind,'dosing'));
+ok('assistant says none for unrelated',()=>assert.equal(A.answer('سعر الذهب اليوم',cards).kind,'none'));
+const now=new Date('2026-11-03T12:00:00'),p=Core.defaultState().profile;
+const mk=vals=>({profile:p,readings:vals.map((mg,i)=>({id:String(i),mg,context:'random',at:new Date(now-86400000*i).toISOString()}))});
+ok('triage high on value below 54',()=>assert.equal(T.triage(mk([100,50,110,120,130,125]),Core,now).level,'high'));
+ok('triage medium on little data',()=>assert.equal(T.triage(mk([100,110]),Core,now).level,'medium'));
+ok('triage low when stable',()=>assert.equal(T.triage(mk([100,110,120,115,105,125]),Core,now).level,'low'));
+ok('sort puts high first',()=>{const l=T.sortPatients([{level:'low',stats:{low:0}},{level:'high',stats:{low:2}}]);assert.equal(l[0].level,'high');});
+console.log(`\n${n} feature checks passed.`);

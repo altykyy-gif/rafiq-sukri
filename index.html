@@ -1,11 +1,54 @@
 <!doctype html>
-<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'self'; form-action 'none'">
-<title>المساعد | رفيق السكري</title>
-<style>@font-face{font-family:Cairo;src:url(../assets/cairo-regular.woff2) format('woff2')}body{font-family:Cairo,system-ui,sans-serif;margin:0;background:#f6f8fa;color:#173744}main{max-width:720px;margin:auto;padding:20px}h1{color:#0d3042}.note{background:#f8f3e9;border-radius:12px;padding:12px}input{width:100%;box-sizing:border-box;padding:12px;font:inherit;border:1px solid #e1e9eb;border-radius:10px;margin:10px 0}button{background:#147d86;color:#fff;border:0;border-radius:10px;padding:10px 18px;font:inherit}section{background:#fff;border-radius:14px;padding:14px;margin:12px 0}.alert{background:#fdf0f0;color:#b43f45;padding:12px;border-radius:12px;font-weight:700}a{color:#147d86}</style></head>
-<body><main><p><a href="../">← العودة إلى التطبيق</a></p>
-<h1>اسأل المساعد</h1>
-<p class="note">يبحث في بطاقات التثقيف الموثقة داخل التطبيق فقط، ولا يستخدم نموذجًا لغويًا ولا يشخّص ولا يعطي جرعات. يعمل دون إنترنت.</p>
-<form id="f"><input id="q" placeholder="مثلًا: ماذا أفعل عند هبوط السكر؟" autocomplete="off"><button>بحث</button></form>
-<div id="out" role="status"></div></main>
-<script src="../content.js"></script><script src="../assistant.js"></script><script src="./assistant-page.js"></script></body></html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0d3042">
+  <meta name="description" content="رفيق السكري: سجل عربي خاص على جهازك، قراءات ورسوم وتقارير للطبيب وتثقيف موثق. يعمل دون إنترنت بعد التجهيز الأول.">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="رفيق السكري">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; connect-src 'self'; worker-src 'self'; manifest-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'">
+  <title>رفيق السكري | متابعة أوضح، كل يوم</title>
+  <link rel="manifest" href="./manifest.webmanifest?v=1.0.1">
+  <link rel="icon" type="image/x-icon" sizes="16x16 32x32 48x48" href="./favicon.ico?v=1.0.1">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png?v=1.0.1">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png?v=1.0.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png?v=1.0.1">
+  <link rel="preload" href="./assets/cairo-regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./core.js"></script>
+  <script defer src="./storage.js"></script>
+  <script defer src="./content.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a href="#main" class="skip-link">انتقل إلى المحتوى</a>
+  <div id="boot" class="boot"><img src="./assets/icon-192.png?v=1.0.1" width="70" height="70" alt=""><h1>رفيق السكري</h1><p>نجهّز مساحتك الخاصة…</p></div>
+  <div id="shell" hidden>
+    <aside class="sidebar" id="sidebar" aria-label="القائمة الرئيسية">
+      <a href="#dashboard" class="brand"><img src="./assets/icon-192.png?v=1.0.1" width="46" height="46" alt=""><span><strong>رفيق السكري</strong><small>متابعة أوضح، كل يوم</small></span></a>
+      <div class="side-label">مساحتك اليومية</div>
+      <nav id="desktopNav"></nav>
+      <button class="sos-side" data-action="sos"><span data-icon="shield"></span><span>عند هبوط السكر<small>خطوات واضحة ومؤقت للقياس</small></span><span>←</span></button>
+      <div class="side-bottom"><div class="private-dot"><i></i> بياناتك تبقى على جهازك</div><p>مساحة للمتابعة والتثقيف<br>تدعم خطتك مع الفريق الطبي</p><button class="text-button" data-action="install"><span data-icon="download"></span> تثبيت التطبيق</button></div>
+    </aside>
+    <div class="workspace">
+      <header class="topbar"><div><span class="eyebrow">خطوة صغيرة لصحتك</span><h2 id="viewTitle">نظرة على يومك</h2></div><div class="top-actions"><span id="offlineStatus" class="status-chip"><i></i><span>تجهيز العمل دون إنترنت</span></span><button class="icon-button" data-action="settings" aria-label="الملف والأهداف"><span data-icon="settings"></span></button><button class="profile-avatar" data-action="settings" aria-label="الملف الشخصي">ر</button></div></header>
+      <div id="demoBanner" class="demo-banner" hidden><strong>عرض تجريبي — بيانات افتراضية وليست سجل مريض.</strong><span>التغييرات هنا مؤقتة.</span><button data-action="exit-demo">العودة إلى سجلي ←</button></div>
+      <div id="storageWarning" class="notice danger" hidden role="alert"></div>
+      <div id="updateNotice" class="update-notice" hidden><span>يتوفر إصدار جديد. بياناتك تبقى محفوظة.</span><button data-action="apply-update">تحديث الآن</button></div>
+      <main id="main" tabindex="-1"></main>
+      <footer class="app-footer"><span>رفيق السكري <b>•</b> مشروع جامعي تطبيقي، الإصدار <span id="version"></span></span><button class="text-button" data-action="about">مبروكة 5784 · نسرين 5783 <span>↗</span></button></footer>
+    </div>
+    <nav class="mobile-nav" id="mobileNav" aria-label="التنقل السريع"></nav>
+    <button class="mobile-add" data-action="add-reading" aria-label="إضافة قراءة سكر"><span data-icon="plus"></span></button>
+    <div id="timerDock" class="timer-dock" hidden><button data-action="sos"><span data-icon="clock"></span><span>إعادة القياس خلال <b id="timerDockTime">15:00</b></span></button><button data-action="cancel-timer" aria-label="إلغاء المؤقت">×</button></div>
+  </div>
+  <dialog id="appDialog" aria-labelledby="dialogTitle"><div id="dialogContent"></div></dialog>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <div id="printRoot" class="print-root"></div>
+  <input id="restoreFile" type="file" accept="application/json,.json" aria-label="اختيار ملف نسخة احتياطية للاستعادة" hidden>
+  <noscript><div class="noscript">يرجى تفعيل JavaScript لتسجيل القراءات وتشغيل التطبيق. لا نرسل بياناتك إلى خادم.</div></noscript>
+</body>
+</html>
